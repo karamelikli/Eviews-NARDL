@@ -12,22 +12,6 @@ if !ifVarLar=1 then
 endsub
 
 
-
- 
-subroutine license(    )
-if !ifVarLar=1 then
-      %license=@getnextname("ZZ__license")
-      text {%license}
-      {%license}.append  "This code has been written by Huseyin Karamelikli (Hossein Haghparast Gharamaleki) Thanks to Yashar Tarverdi. Him works is expanded here in some directions. Thanks to Dave Giles for very usfull guidness about ARDL at him powerfull weblog."
-      {%license}.append "Please note that this program is beta version and lunched only for test propose. Final version might released with MIT license when all bugs would be repaired."
-      {%license}.append	"Please dont redistribute it while it is not released as Final version by MIT license. For any questions or comments please contact hakperest@gmail.com . This version is allowed only for Sefa Erkus to test of program propose. "
-      {%sp}.append   {%license}
-      !sayfaNo=!sayfaNo+1
-      {%sp}.name  !sayfaNo "license"
-endif
-endsub
-
-
 subroutine MassRun( )
 if !ifVarLar=1 then
 	output(r) {%OutputFile}

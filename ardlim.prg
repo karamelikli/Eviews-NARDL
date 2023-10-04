@@ -200,14 +200,6 @@ spool {%sp}
 
 
 
-if %lic="kagan" then
-!lissira=1
-else
-!lissira=2
-call license
-endif
-
-
  %OzetTable=@getnextname("OzetTable")
  table {%OzetTable}
  !tabloOzetSira=0
@@ -477,9 +469,9 @@ call TabloOzetEkle( "used Observation",@str(!usedObs) ,"" )
       {%OzetTable}.setwidth(1) 40
       {%OzetTable}.setwidth(2) 36
       {%OzetTable}.setjust(@all) top left
-{%sp}.insert(loc=!lissira)   {%OzetTable} 'lisans yoksa bire varsa ikiye
+  {%sp}.insert(loc=1)   {%OzetTable} 
 !sayfaNo=!sayfaNo+1
- {%sp}.name !lissira "Abstract"
+ {%sp}.name 1 "Abstract"
  
  
  if !displayIT=1 then
