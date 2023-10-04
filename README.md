@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # N-ARDL Eviews 
 
 This add-in can estimate the symmetric and asymmetric ARDL in [Eviews](https://eviews.com). All necessary tests are included in the results panel. 
@@ -184,10 +183,3 @@ Yes=1 No=0
 |	%PlotShortRun|Plot Short run multiplier|
 |	%DifferentAsymLag|different Asymmetric Vars Lags|
 
-=======
-# Eviews-NARDL
-
-Download HARDL.aipz file and click on it to install in Eviews.
-
-After installation, open your series as a group and run it under the proc button. 
->>>>>>> origin/main
