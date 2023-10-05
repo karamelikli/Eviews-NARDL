@@ -14,9 +14,11 @@ The old version of this project [https://github.com/karamelikli/Eviews.NARDL](ht
 
 ### Contributors
 
-This add-in is dedicated to the renowned economist **Prof. Mohsen Bahmani Oskooee**.
+I would like to express my sincere gratitude to **Prof. Mohsen Bahmani Oskooee** for his invaluable guidance and insights on econometrics, which significantly influenced the development of this Eviews add-in. His expertise and feedback played a pivotal role in shaping the features and functionality of this tool.
 
-This code has been written by  [Huseyin Karamelikli](https://github.com/karamelikli) (Hossein Haghparast Gharamaleki). Thanks to Yashar Tarverdi. His works are expanded here in some directions.
+I would like to extend my appreciation to **Yashar Tarverdi** for his prior work on an add-in that served as an essential foundation for this project. 
+
+This code has been written by  **[Huseyin Karamelikli](https://github.com/karamelikli)** (Hossein Haghparast Gharamaleki). 
 
 For further contributions and advice, please visit [https://github.com/karamelikli/Eviews.NARDL](https://github.com/karamelikli/Eviews.NARDL) 
 
@@ -125,7 +127,6 @@ For any additional options, open `C:\Users\YOURUSERNAME\Documents\EViews Addins\
 
 | Option | Default | Description |
 |--------| --------| ------------|
-| treeSortable | #tree | The tree root ID selector. If you change the root selector then you have to update the CSS as per requirements.|
 | %vars|  	|  All vars that should be in the all variables boxes| 
 | %evars|  	|Exogenous Variables |
 | %asvars|  	|Short-run Asymmetric Variables|
