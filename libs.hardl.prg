@@ -900,6 +900,56 @@ if !ifVarLar=1 then
 endif
 endsub
 
+subroutine UzunDonem()
+if !ifVarLar=1 then
+
+	%longRun = @getnextname("ZZ__longRun")
+	table {%longRun} 
+		%TheResults=@getnextname("TheResults")
+		freeze({%TheResults}) {%eqname}
+		
+		sym zcov1={%eqname}.@coefcov
+		
+	{%longRun}(1,1)="Variable"
+	{%longRun}(1,2)="Coeficient"
+	{%longRun}(1,3)="Std. Error"
+	{%longRun}(1,4)="t-statistic"
+	{%longRun}(1,5)="Prob."
+	!dep_coef={%eqname}.@coefs(1)
+	!mydf={%eqname}.@df'{%eqname}.@df
+	!n_LongVars=@wcount(%lsECM1)
+		for !j=2 to !n_LongVars
+			%v=@word(%lsECM1,!j)
+			{%longRun}(!j,1)=%v
+			!ind_coef={%eqname}.@coefs(!j)
+			!A=1/!dep_coef
+			!B=-!ind_coef/!dep_coef^2
+			!longRuncoef=-!ind_coef/!dep_coef
+			{%longRun}(!j,2)=!longRuncoef
+			
+			 !stde= @sqrt((!A^2)*zcov1(!j,!j)+2*!A*!B*zcov1(!j,1)+(!B^2)*zcov1(1,1)) '@sqrt({%eqname}.@coefcov(!j,!j))
+			  {%longRun}(!j,3)=!stde
+			  !myt=!longRuncoef/!stde
+			 {%longRun}(!j,4)=!myt			
+			 {%longRun}(!j,5)= 2* @ctdist(-abs(!myt),!mydf)
+			'{%longRun}(!j,4)=-{%eqname}.@coefs(!j)/!dep_coef
+		next j	
+	!ConstantRow={%eqname}.@ncoefs
+	{%longRun}(!j,1)="C"
+	!ind_coef={%eqname}.@coefs(!ConstantRow)
+		!A=1/!dep_coef
+		!B=-!ind_coef/!dep_coef^2		
+		!longRuncoef=-!ind_coef/!dep_coef
+		{%longRun}(!j,2)=!longRuncoef
+		!stde= @sqrt((!A^2)*zcov1(!ConstantRow,!ConstantRow)+2*!A*!B*zcov1(!ConstantRow,1)+(!B^2)*zcov1(1,1)) '@sqrt({%eqname}.@coefcov(!j,!j))
+		{%longRun}(!j,3)=!stde
+		!myt=!longRuncoef/!stde
+		{%longRun}(!j,4)=!myt
+		{%longRun}(!j,5)= 2* @ctdist(-abs(!myt),!mydf)
+ 
+endif
+endsub
+
 
 subroutine TabloBasiHazirla()
 if !ifVarLar=1 then

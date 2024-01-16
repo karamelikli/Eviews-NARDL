@@ -1,3 +1,4 @@
+
 # N-ARDL Eviews 
 
 This add-in can estimate the symmetric and asymmetric ARDL in [Eviews](https://eviews.com). All necessary tests are included in the results panel. 
@@ -118,6 +119,12 @@ $$\lim_ { h  \to    \infty  } m_h^{- }  =  \alpha_1^{- }   $$
 
 
  
+## Normalization
+To obtain the long-run estimated parameters, the following method was utilized:
+
+$$ ~ \alpha^{+ }_1  =- { \frac { \eta_1^{+ } }  {\theta }}  ~ , ~ \alpha^{- }_1   =  -{ \frac{ \eta^{- }_1 }  {\theta }}    ~ , ~  \alpha_2 =  -{\frac{ \eta_2 }  {\theta }} $$
+The standard errors are performed by following the Formula:
+$$\sigma^2 (-\frac { \eta_1^{+ } }  {\eta_0 })= (\frac {1} {\eta_0})^2 \sigma^2(\eta_1^{+ } ) -2 \frac { \eta_1^{+ } }  {\eta_0 ^3 } COV( \eta_1^{+ },\eta_0 ) +(\frac { \eta_1^{+ } }  {\eta_0 ^2 } )^2 \sigma^2(\eta_0 )$$
 
  
 ## Options

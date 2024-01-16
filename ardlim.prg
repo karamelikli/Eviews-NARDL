@@ -473,6 +473,12 @@ call TabloOzetEkle( "used Observation",@str(!usedObs) ,"" )
 !sayfaNo=!sayfaNo+1
  {%sp}.name 1 "Abstract"
  
+ call UzunDonem
+ 
+   {%sp}.insert(loc=2)   {%longRun} 
+!sayfaNo=!sayfaNo+1
+ {%sp}.name 2 "Normalized"
+ 
  
  if !displayIT=1 then
 _this.display {%sp}
