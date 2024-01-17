@@ -27,7 +27,7 @@ All new commits are welcome.
 
 ### Current version
 
-The last version of the executable add-in (N-ARDL.aipz) is **2.55**.
+The last version of the executable add-in (N-ARDL.aipz) is **2.56**.
 
 ## Installation
 Download N-ARDL.aipz file from this repository and click on it or download from addins menu in Eviews.
@@ -122,11 +122,15 @@ $$\lim_ { h  \to    \infty  } m_h^{- }  =  \alpha_1^{- }   $$
 ## Normalization
 To obtain the long-run estimated parameters, the following method was utilized:
 
-$$ ~ \alpha^{+ }_1  =- { \frac { \eta_1^{+ } }  {\theta }}  ~ , ~ \alpha^{- }_1   =  -{ \frac{ \eta^{- }_1 }  {\theta }}    ~ , ~  \alpha_2 =  -{\frac{ \eta_2 }  {\theta }} $$
+$$ ~ \alpha^{+ }_1  =- { \frac { \eta_1^{+ } }  {\eta_0  }}  ~ , ~ \alpha^{- }_1   =  -{ \frac{ \eta^{- }_1 }  {\eta_0  }}    ~ , ~  \alpha_2 =  -{\frac{ \eta_2 }  {\eta_0  }} $$
 
 The standard errors are performed by following the Formula:
 
 $$\sigma^2 (-\frac { \eta_1^{+ } }  {\eta_0 })= (\frac {1} {\eta_0})^2 \sigma^2(\eta_1^{+ } ) -2 \frac { \eta_1^{+ } }  {\eta_0 ^3 } COV( \eta_1^{+ },\eta_0 ) +(\frac { \eta_1^{+ } }  {\eta_0 ^2 } )^2 \sigma^2(\eta_0 )$$
+
+Please note that the standardized calculation of the constant is under the following assumption:
+
+$$  \frac { \beta_0 }  {\alpha_0}  \approx 0$$
 
  
 ## Options
