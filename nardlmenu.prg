@@ -20,7 +20,6 @@
 		      "edit", %evars,%ExogenousTxt,100, _
 		      "edit", %asvars,%SAsymmetricTxt,100, _
 		      "edit", %alvars,%LAsymmetricTxt,100, _
-				"text", "For more information, contact Huseyin Karamelikli at https://github.com/karamelikli/Eviews-NARDL", _	      
 		      "edit",%maxlag,%maxlagT,10, _
 		      "list",!sig,%sigprompt,%sigchoice, _
 		      "edit", %userdefined,%userdefinedText,50 , _
@@ -31,8 +30,5 @@
 		      
 		      
 		      )
-	
-
-
 
 
