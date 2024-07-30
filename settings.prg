@@ -11,7 +11,7 @@
 	!rest=2	 	' [2] ""No intercept and no trend""  ""intercept and no trend"" ""Intercept and trend""
 	!Astype=1 	' [1] ""Short Run"" ""Long Run"" ""Both""
 	%userdefined="" ' [""] User defined ARDL lags
-	!criterion=2	' [1]  ""Akaike Info Criterion(AIC)"" ""Schwarz Criterion(SC)"" ""Hannan-Quinn criter"" ""General to Specified""	
+	!criterion=1 	' [1]  ""Akaike Info Criterion(AIC)"" ""Schwarz Criterion(SC)"" ""Hannan-Quinn criter"" ""General to Specified""	
 '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Proccess Settings
         !KeepMainFrame=1	' [0] Save All results in workfile.
 	!KeepEquation=1		' [0] Save final equation in workfile.
@@ -43,9 +43,9 @@
 	
 '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@q
 	%caption="Non Linear And Linear ARDL Bound Approach"
-	%nameofvars="Enter name of variables. First variable would be set as depended variable"
+	%nameofvars="List of variables. Depended variable, followed by a list of nondeterministic independent variables."
 	
-	%ExogenousTxt="Exogenous Variables "
+	%ExogenousTxt="Deterministic (Dummy) Variables "
 	
 	
 	%LAsymmetricTxt="Long-run Asymmetric Variables "
@@ -67,7 +67,7 @@
 	%incZeroStartTxt="include Zero lag of model?"
 
 	
-	%PlotShortRun ="Plot Short run multiplier"
-	%DifferentAsymLag="different Asymmetric Vars Lags"
+	%PlotShortRun ="Plot Dynamic multiplier"
+	%DifferentAsymLag="Different Asymmetric Vars' Lags"
 
 

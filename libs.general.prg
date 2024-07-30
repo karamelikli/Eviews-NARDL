@@ -217,5 +217,3 @@ subroutine   WriteToLog(  string %in )
       endif
  endif	
 endsub
-
-

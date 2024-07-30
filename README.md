@@ -9,9 +9,11 @@ This Add-in helps analyze linear and non-linear ARDL. There are four options tha
  - Asymmetry in short-run and symmetry in long-run
  - Symmetry in  short-run and asymmetry in long-run
 
-External variables, like dummy variables, can be added to the model. 
+Deterministic variables, like dummy variables, can be added to the model. 
 
-The old version of this project [https://github.com/karamelikli/Eviews.NARDL](https://github.com/karamelikli/Eviews.NARDL) migrated here. The previous version is not supported anymore. 
+### Current version
+
+The last version of the executable add-in (N-ARDL.aipz) is **2.57**.
 
 ### Contributors
 
@@ -23,11 +25,7 @@ This code has been written by  **[Huseyin Karamelikli](https://github.com/karame
 
 For further contributions and advice, please visit [https://github.com/karamelikli/Eviews.NARDL](https://github.com/karamelikli/Eviews.NARDL) 
 
-All new commits are welcome.
-
-### Current version
-
-The last version of the executable add-in (N-ARDL.aipz) is **2.56**.
+**All new commits are welcome.**
 
 ## Installation
 Download N-ARDL.aipz file from this repository and click on it or download from addins menu in Eviews.
@@ -37,14 +35,15 @@ Open a series or a group of time series in Eviews. Then, click on Add-in > Make 
 
 ![Open the Add-in](https://github.com/karamelikli/Eviews-NARDL/assets/6809318/0482d41d-53e2-49ab-8ca2-c74534bd645f)
 
-All of your selected series will be displayed in the variables box. The first one is your dependent variable. You can enter dummy variables in the Exogenous Variables box. If you want to define a variable as an asymetric one, you should put its name in both short-run and long-run asymmetric variables boxes. Otherwise, you can have asymmetry just in the short-run or long-run based on the boxes filled. 
-By selcting Plot, dynamic multipliers will be plotted. If you prefer to diffentiation of lags of asymetric variables in Negative and Positive decompositions you should check **different Asymmetric Vars Lags**.
+All of your selected series will be displayed in the variables box. The first one is your dependent variable. You can enter dummy variables in the Deterministic Variables box. If you want to define a variable as an asymetric one, you should put its name in both short-run and long-run asymmetric variables boxes. Otherwise, you can have asymmetry just in the short-run or long-run based on the boxes filled. 
+By selcting Plot, dynamic multipliers will be plotted. If you prefer to diffentiation of lags of asymetric variables in Negative and Positive decompositions you should check **Different Asymmetric Vars' Lags**.
 
-![Main menu](https://github.com/karamelikli/Eviews-NARDL/assets/6809318/ffa5d563-baba-44a7-a39b-6ff119df6966)
+![Main menu](https://github.com/user-attachments/assets/568659be-1481-4042-8a4a-1b12d92f439d)
 
 The results would be as follows. The first page is an abstract of all contained results, which may be useful to see all the results at a glance. 
 
-![The reulsts](https://github.com/karamelikli/Eviews-NARDL/assets/6809318/c31d79b8-a797-4c24-858e-53f77df91cea)
+![The reulsts](https://github.com/user-attachments/assets/8cf42e8e-92fb-4c19-885b-86150646e1fc)
+
 
   
 # How to Use OpenOffice/LibreOffice to make the model’s formulas
@@ -149,7 +148,7 @@ For any additional options, open `C:\Users\YOURUSERNAME\Documents\EViews Addins\
 |!rest|2| 1 "No intercept and no trend" 2 "intercept and no trend" 3"Intercept and trend"|
 |	!Astype|1|1 "Short Run" 2"Long Run" 3"Both"|
 |	%userdefined||User defined ARDL lags|
-|	!criterion|2|1 "Akaike Info Criterion(AIC)" 2 "Schwarz Criterion(SC)" 3"Hannan-Quinn criter" 4 "General to Specified"|
+|	!criterion|1|1 "Akaike Info Criterion(AIC)" 2 "Schwarz Criterion(SC)" 3"Hannan-Quinn criter" 4 "General to Specified"|
 
 ### Process Settings
 Yes=1 No=0
@@ -191,8 +190,8 @@ Yes=1 No=0
 | Option | Default |
 |--------| --------|
 |	%caption|Non Linear And Linear ARDL Bound Approach|
-|%nameofvars|Enter name of variables. First variable would be set as depended variable|
-|	%ExogenousTxt|Exogenous Variables |
+|%nameofvars|List of variables. Depended variable, followed by a list of nondeterministic independent variables.|
+|	%ExogenousTxt|Deterministic (Dummy) Variables|
 |	%LAsymmetricTxt|Long-run Asymmetric Variables |
 |	%SAsymmetricTxt|Short-run Asymmetric Variables|
 |%ResUnresText|What is you Model Type|
@@ -205,6 +204,6 @@ Yes=1 No=0
 |	%critchoice| ""Akaike Info Criterion (AIC)"" ""Schwarz Criterion (SC)"" ""Hannan-Quinn Criterion (HQ)"" ""General to Specified""|
 |%TableStatus|""Valid"" ""Rejected"" ""Ambiguous""|
 |	%incZeroStartTxt|include Zero lag of model?|
-|	%PlotShortRun|Plot Short run multiplier|
-|	%DifferentAsymLag|different Asymmetric Vars Lags|
+|	%PlotShortRun|Plot Dynamic multiplier|
+|	%DifferentAsymLag|Different Asymmetric Vars' Lags|
 

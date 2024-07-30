@@ -335,13 +335,7 @@ if !ifVarLar=1 then
 	      {%LibreFormulas}.append ____Asymetrics Dynamic____________________________
 	      {%LibreFormulas}.append %LibreO_AsyDyn 
 	      
-	 endif
-     
-    
-    {%sp}.append   {%LibreFormulas}
-    !sayfaNo=!sayfaNo+1
-    {%sp}.name  !sayfaNo "LibreFormulas"
-    
+	 endif    
 endif
 endsub
 

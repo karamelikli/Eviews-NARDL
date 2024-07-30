@@ -11,7 +11,9 @@
 	if !result=-1 then
 		stop
 	endif
-	 
+	
+	' Creating help text to be called in AddHelp function
+
 
 	'---------------------------------------------------------------------------------------'
 	%vars=@upper(%vars)
@@ -193,8 +195,7 @@ endif
 
 
 
-%sp=@getnextname("My__Sonuc")
-spool {%sp}
+
 !usedObs={%eqname}.@npers
 !dataSay={%DependVar}.@obs
 
@@ -230,47 +231,14 @@ endif
 
  
 
-
-
-
-
-
-
-
-
-
- if !MakeLibreFormulas=1 then
- call MakeLibreFormulas
- endif
- 
    %Outputs=@getnextname("ZZ__OutPuts")
     spool {%Outputs}
 	%DDependVar="d("+%DependVar+")"
 	{%Outputs}.append {%DDependVar}.line
 	{%Outputs}.name  1  "Dependent_Var_Graphics"
 	
-	{%Outputs}.append  {%WaTest}
-	{%Outputs}.name  2 "Wald_Output" 	
-	
-	{%Outputs}.append  {%eqname} 
-	{%Outputs}.name 3  "Final_Estimation"
-	
 	{%Outputs}.append  {%eqname}.representations 
-	{%Outputs}.name 4  "Representations"
-	
-	call ShortRunECM
-	{%Outputs}.append  {%SRECM} 
-	
-	call WriteToLog("lsAR = "+%lsAR)
-	call WriteToLog("lsSAR = "+%lsSAR)
-	call WriteToLog("ls2  = "+%ls2 )
-	call WriteToLog("ls   = "+%ls )
-	call WriteToLog("SRECM   = "+ %KisaDonemVars  )
-	{%Outputs}.name 5  "ECM"
-	
- {%sp}.append  {%Outputs}
-!sayfaNo=!sayfaNo+1
- {%sp}.name  !sayfaNo "Estimations"
+	{%Outputs}.name 2  "Representations"
  
  
  if !PlotShortRun =1 then
@@ -287,10 +255,6 @@ endif
 		d {%graph} 
 			
 	      next v
-	    
-	    {%sp}.append    {%Graphs} 
-	!sayfaNo=!sayfaNo+1
-	{%sp}.name  !sayfaNo "Graphics"
  endif
  
  
@@ -353,11 +317,16 @@ if !NARDL=1  then
 	d {%NARDLTESTSs}
     endif
    
- {%sp}.append    {%NARDLTESTS} 
- !sayfaNo=!sayfaNo+1
- {%sp}.name  !sayfaNo "Assymetry_Wald_test"
+
 endif
- 
+
+call ShortRunECM
+	call WriteToLog("lsAR = "+%lsAR)
+	call WriteToLog("lsSAR = "+%lsSAR)
+	call WriteToLog("ls2  = "+%ls2 )
+	call WriteToLog("ls   = "+%ls )
+	call WriteToLog("SRECM   = "+ %KisaDonemVars  )
+	
 %Stability=@getnextname("ZZ__Stability")
 spool {%Stability}
 	%StabilityM=@getnextname("ZZ__StabilityM")
@@ -395,9 +364,7 @@ spool {%Stability}
 	{%Stability}.append  {%StabilityS}
 	{%Stability}.name  2 "ECM"
 	
-{%sp}.append  {%Stability}
-!sayfaNo=!sayfaNo+1
- {%sp}.name  !sayfaNo "Stability_Test"
+
 
 
 
@@ -417,9 +384,7 @@ include ".\tests.prg"
 
    ' %bu=%eqname+".hettest(type=BPG) @REGS"
    
- {%sp}.append  {%Diagnostics}
-!sayfaNo=!sayfaNo+1
- {%sp}.name  !sayfaNo "Diagnostic_Tests"
+
  
 
 
@@ -432,19 +397,9 @@ if !criterion<>4 then
 	    {%spLag}.append {%tn}
 	    {%spLag}.name  2 "Lag_Tables"
 	endif
-	{%sp}.append {%spLag}
-	!sayfaNo=!sayfaNo+1
-	{%sp}.name  !sayfaNo "Lags"
  endif
  
- if !debug = 1 then
-      if @isobject(%WriteLog) then
-	  {%sp}.append  {%WriteLog} 
-	  !sayfaNo=!sayfaNo+1
-	  {%sp}.name  !sayfaNo "Logs"
-      endif
 
-endif
  
 
 
@@ -469,15 +424,87 @@ call TabloOzetEkle( "used Observation",@str(!usedObs) ,"" )
       {%OzetTable}.setwidth(1) 40
       {%OzetTable}.setwidth(2) 36
       {%OzetTable}.setjust(@all) top left
-  {%sp}.insert(loc=1)   {%OzetTable} 
-!sayfaNo=!sayfaNo+1
- {%sp}.name 1 "Abstract"
+
  
- call UzunDonem
  
-   {%sp}.insert(loc=2)   {%longRun} 
-!sayfaNo=!sayfaNo+1
- {%sp}.name 2 "Normalized"
+ 
+' ############################################################################################################## 
+' Creat display Panel 
+%sp=@getnextname("My__Sonuc")
+spool {%sp}
+
+	%HelpText=@getnextname("ZZ__HelpText")
+	table(5,1) {%HelpText} 
+      {%HelpText}(1,1)=  "For detailed results for ARDL and NARDL, please check the left menus. The critical test results are presented"
+      {%HelpText}(2,1)=  "in the abstract table."      
+      {%HelpText}(3,1) ="The ARDL menu contains the results for the most fitted models. The Long Run menu has normalized for long-"
+      {%HelpText}(4,1)=	"run results."      
+      {%HelpText}(5,1)=	"The estimates for cointegration are presented in the Wald_test menu. If you have a nonlinear model,  the Wald "
+      {%HelpText}(6,1)=	 "tests for asymmetry will be shown in the Assymetry_Wald_test menu."  
+      {%HelpText}(7,1)=	"For details, please visit https://github.com/karamelikli/Eviews-NARDL ."      
+ {%HelpText}.setwidth(1) 85
+ {%HelpText}.setjust(@all) left
+ 
+{%sp}.append(name="Help" )   {%HelpText}
+{%sp}.flatten
+{%sp}.append(name="Abstract")  {%OzetTable}
+ 
+
+'!sayfaNo=!sayfaNo+1
+'{%sp}.name !sayfaNo "Abstract"
+ 
+{%sp}.append(name="ARDL")  {%eqname}
+ 
+ 
+ call UzunDonem 
+ {%sp}.append(name="Long_Run")  {%longRun} 
+
+ 
+ {%sp}.append(name="Wald_test")   {%WaTest}
+if !NARDL=1  then
+	{%sp}.append(name="Assymetry_Wald_test")     {%NARDLTESTS} 
+endif
+	{%sp}.append(name="ECM")   {%SRECM} 
+	
+
+  if !PlotShortRun =1 then
+    {%sp}.append(name="Dynamic_Multipliers")     {%Graphs} 
+ endif
+	
+ 
+ 
+if !MakeLibreFormulas=1 then
+	call MakeLibreFormulas
+	    {%sp}.append(name="LibreFormulas")    {%LibreFormulas}
+
+ endif
+ 
+  {%sp}.append(name="Estimations")   {%Outputs}
+
+ 
+
+ 
+
+
+{%sp}.append(name="Stability_Test")   {%Stability}
+ 
+ {%sp}.append(name="Diagnostic_Tests")   {%Diagnostics}
+ 
+ 
+
+
+if !criterion<>4 then
+	{%sp}.append(name="Lags")  {%spLag}
+ endif
+ 
+ if !debug = 1 then
+      if @isobject(%WriteLog) then
+	  {%sp}.append(name="Logs")   {%WriteLog} 
+      endif
+endif
+
+
+ 
  
  
  if !displayIT=1 then
