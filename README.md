@@ -1,3 +1,8 @@
+# Important Update: Transition to R Package
+
+Support for EViews in the Eviews-NARDL package has officially ended. For the most updated and comprehensive version of **kardl**, we recommend using the **R package** available on **CRAN**. This version offers full functionality for Symmetric and Asymmetric ARDL estimations, along with advanced cointegration testing and diagnostic tools. Install the latest version from CRAN to leverage the complete set of features and stay up-to-date with ongoing improvements.
+
+🔗 [Link to R package](https://cran.r-project.org/package=kardl)
 
 # N-ARDL Eviews 
 
